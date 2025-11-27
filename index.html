@@ -104,8 +104,8 @@
             /* Fundal dinamic adăugat aici - OPACITATEА GRADIENTULUI REDUSĂ DE LA 0.8 LA 0.6 */
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                               url('https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafkreih4w64l3egtrp5mw7dlp27xjai7z7pcvgaq7cdwhk776sss7zkeby');
-            background-size: cover;
-            background-position: center 25%;
+            background-size: contain;
+            background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             text-align: center;
@@ -326,6 +326,27 @@
             text-shadow: 0 0 5px var(--accent-glow);
         }
 
+        /* Social Links in Contact Section */
+        .social-links-contact {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .social-links-contact a {
+            color: var(--primary-color);
+            font-size: 32px;
+            opacity: 0.9;
+            transition: opacity 0.3s, transform 0.3s, text-shadow 0.3s;
+        }
+        .social-links-contact a:hover {
+            opacity: 1;
+            transform: scale(1.2);
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
         /* Footer */
         footer {
             padding: 20px;
@@ -529,6 +550,16 @@
                 <span class="lang en hidden">Booking Phone Number: </span>
                 <a href="tel:+9647517380071">+964 751 738 0071</a>
             </p>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="social-links-contact">
+            <a href="https://www.instagram.com/osama.alzain?igsh=MXdtb3B1aGs2cHZ5Mw%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1D9H6gEsvJ/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/osamazain86?s=21&t=M9wr422j7Sxo_SEL-WPhQw" target="_blank" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.tiktok.com/@osama.alzain?_r=1&_t=ZS-91hs45wKN5Z" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://snapchat.com/t/JUNXsHOH" target="_blank" aria-label="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
+            <a href="https://www.youtube.com/@osama.alzain" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
         
     </section>
