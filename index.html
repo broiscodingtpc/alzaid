@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أسامة الزين المغني | Osama Alzain</title>
+    <!-- Fonturi elegante: Noto Sans Hebrew pentru arabă și Playfair Display pentru engleză/titluri -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Iconițe Font Awesome pentru Social Media și Butonul YouTube -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        /* RESET ȘI STILURI GLOBALE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth; /* Tranziție lină la navigare */
+        }
+
+        body {
+            /* Noto Sans Hebrew suportă caracterele arabe (AR) */
+            font-family: 'Noto Sans Hebrew', 'Playfair Display', serif;
+            line-height: 1.6;
+            background-color: #000; 
+            color: #fff; 
+            transition: text-align 0.5s; 
+        }
+
+        /* Culori Premium Gold */
+        :root {
+            --primary-color: #EBCF56; /* Aur mai cald și intens */
+            --secondary-color: #050505; /* Negru profund */
+            --text-color: #fff;
+            --accent-glow: rgba(235, 207, 86, 0.5); /* Sclipire aurie */
+        }
+
+        /* Clasa pentru ascundere */
+        .hidden {
+            display: none !important;
+        }
+
+        /* === 1. NAVIGARE FIXĂ ȘI BUTON LIMBĂ (Top Bar Subtil) === */
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: rgba(0, 0, 0, 0.8); /* Mai opac */
+            z-index: 1000;
+            border-bottom: 1px solid rgba(235, 207, 86, 0.2); /* Linie subtilă aurie */
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        nav a:hover {
+            color: var(--primary-color);
+            text-shadow: 0 0 5px var(--accent-glow);
+        }
+        
+        /* BUTON LIMBĂ */
+        #lang-switch {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        #lang-switch:hover {
+            background-color: var(--primary-color);
+            color: #000;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        /* === 2. SECȚIUNEА HERO (Full Screen Landing Page) === */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            /* Fundal dinamic adăugat aici - OPACITATEА GRADIENTULUI REDUSĂ DE LA 0.8 LA 0.6 */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafkreieva6gvthzesqsppegm5jhbjrq64ywauo5vbm7rfqn6ufx6jckleq') center center / cover no-repeat fixed;
+            text-align: center;
+            /* Adaugă o sclipire subtilă */
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.8);
+
+            /* --- STILURI PENTRU EFECTUL CINEMATIC DE ÎNCĂRCARE --- */
+            opacity: 0; 
+            transform: scale(1.05); /* Începe puțin zoom-at */
+            transition: opacity 2s ease-out, transform 2s ease-out; /* Tranziție lentă (2s) */
+        }
+
+        /* Clasa care declanșează dezvăluirea cinematică */
+        .cinematic-reveal {
+            opacity: 1 !important;
+            transform: scale(1) !important; /* Revine la scară normală (zoom-out subtil) */
+        }
+        /* -------------------------------------------------------- */
+
+
+        .hero-content h1 {
+            font-size: 140px; /* Mărit pentru impact */
+            color: var(--text-color);
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 15px; /* Mai dramatic */
+            text-shadow: 0 0 15px var(--primary-color);
+        }
+
+        .hero-content p {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 60px;
+            letter-spacing: 5px;
+        }
+
+        /* === BUTOANE MARI DE NAVIGAȚIE (Mai Luxe) === */
+        .main-buttons {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .main-buttons a {
+            padding: 18px 50px;
+            border: 1px solid var(--primary-color);
+            /* Gradient subtil pentru aspect 3D */
+            background: linear-gradient(145deg, rgba(235, 207, 86, 0.1), rgba(0, 0, 0, 0.5));
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .main-buttons a:hover {
+            background: var(--primary-color);
+            color: #000;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(235, 207, 86, 0.6); /* Sclipire aurie puternică */
+        }
+
+        /* === SOCIALS PE PAGINA HERO (Mai Elegante) === */
+        .social-links-hero {
+            position: absolute;
+            bottom: 30px;
+            left: 30px; 
+            right: auto; 
+            display: flex;
+            gap: 20px;
+            transition: all 0.5s;
+        }
+        
+        .social-links-hero a {
+            color: var(--primary-color);
+            font-size: 28px; /* Mărit */
+            opacity: 0.9;
+            transition: opacity 0.3s, transform 0.3s, text-shadow 0.3s;
+        }
+        .social-links-hero a:hover {
+            opacity: 1;
+            transform: scale(1.3);
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        /* Ajustări RTL pentru Socials */
+        [dir="rtl"] .social-links-hero {
+            left: auto;
+            right: 30px;
+        }
+
+
+        /* === 3. SECȚIUNI DE CONȚINUT (Scroll) === */
+        .content-section {
+            padding: 100px 10%;
+            min-height: 80vh;
+            text-align: inherit; /* Asigură că textul se aliniază corect LTR/RTL */
+        }
+
+        h2 {
+            font-size: 55px; /* Mărit */
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+            border-bottom: 2px solid rgba(235, 207, 86, 0.3);
+            display: inline-block;
+            padding-bottom: 5px;
+            letter-spacing: 2px;
+        }
+
+        .grey-bg {
+            background-color: var(--secondary-color);
+        }
+
+        /* Muzica */
+        .music-player {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        /* STIL NOU PENTRU VIDEO MP4 */
+        .music-player video {
+            width: 100%;
+            max-height: 80vh; 
+            border: 3px solid var(--primary-color); /* Ramă aurie */
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 25px; 
+            /* Asigură că video-ul se aliniază corect în container (mai ales pe mobil) */
+            display: block; 
+            object-fit: contain;
+        }
+        
+        .music-player p {
+            margin-top: 25px;
+            font-size: 22px;
+            color: var(--primary-color);
+        }
+
+        /* STIL NOU PENTRU BUTONUL YOUTUBE */
+        .youtube-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            margin-top: 30px; 
+            border: 2px solid #FF0000; /* Roșu YouTube */
+            background-color: #FF0000;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 4px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            font-family: 'Playfair Display', serif; /* Font lizibil */
+        }
+        .youtube-button:hover {
+            background-color: #A00000; /* Roșu mai închis la hover */
+            border-color: #A00000;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #FF0000, 0 0 25px rgba(255, 0, 0, 0.5); /* Efet de sclipire Roșie */
+        }
+
+        /* Galerie */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px; /* Spațiu mărit */
+            margin-top: 40px;
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .photo-item:hover {
+            transform: scale(1.03);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Contact Details */
+        .contact-details {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 30px;
+            letter-spacing: 1px;
+        }
+        .contact-details a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        .contact-details a:hover {
+            text-decoration: underline;
+            text-shadow: 0 0 5px var(--accent-glow);
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #0d0d0d;
+            font-size: 14px;
+            color: #666;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        /* RESPONSIVITATE */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 70px;
+                letter-spacing: 8px;
+            }
+            .hero-content p {
+                font-size: 28px;
+            }
+            .main-buttons {
+                flex-direction: column;
+                gap: 20px;
+                width: 90%;
+            }
+            .main-buttons a {
+                padding: 15px 20px;
+                width: 100%;
+            }
+            .social-links-hero {
+                position: static; 
+                justify-content: center;
+                margin-top: 40px;
+                left: auto;
+                right: auto;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body dir="rtl">
+
+    <!-- NAVIGARE FIXĂ (Subtilă) -->
+    <header id="navbar">
+        <div class="logo">
+            <span class="lang ar">أسامة الزين</span>
+            <span class="lang en hidden">Osama Alzain</span>
+        </div>
+        
+        <nav>
+            <a href="#music">
+                <span class="lang ar">الموسيقى</span>
+                <span class="lang en hidden">Music</span>
+            </a>
+            <a href="#gallery">
+                <span class="lang ar">المعرض</span>
+                <span class="lang en hidden">Gallery</span>
+            </a>
+            <a href="#contact">
+                <span class="lang ar">اتصل بنا</span>
+                <span class="lang en hidden">Contact</span>
+            </a>
+            <!-- BUTON DE LIMBĂ: AR / EN -->
+            <button id="lang-switch" onclick="toggleLanguage()"></button>
+        </nav>
+    </header>
+
+    <!-- SECȚIUNEА HERO (PAGINA DE LANDING FULL SCREEN) -->
+    <section id="hero">
+        <!-- Fundalul este setat în CSS. Opacitatea stratului negru este acum 0.6. -->
+        
+        <div class="hero-content">
+            <h1 class="rtl">أسامة الزين</h1>
+            <p class="rtl">Osama Alzain Singer</p>
+        </div>
+        
+        <!-- BUTOANE PRINCIPALE DE NAVIGAȚIE -->
+        <div class="main-buttons">
+            <a href="#music">
+                <span class="lang ar">استمع إلى الموسيقى</span>
+                <span class="lang en hidden">Listen to Music</span>
+            </a>
+            <a href="#gallery">
+                <span class="lang ar">شاهد المعرض</span>
+                <span class="lang en hidden">View Gallery</span>
+            </a>
+            <a href="#contact">
+                <span class="lang ar">للحجز والتواصل</span>
+                <span class="lang en hidden">Booking & Contact</span>
+            </a>
+        </div>
+
+        <!-- SOCIALS (Foarte vizibile, dar plasate estetic) -->
+        <div class="social-links-hero">
+            <a href="https://www.instagram.com/osama.alzain?igsh=MXdtb3B1aGs2cHZ5Mw%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1D9H6gEsvJ/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/osamazain86?s=21&t=M9wr422j7Sxo_SEL-WPhQw" target="_blank" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.tiktok.com/@osama.alzain?_r=1&_t=ZS-91hs45wKN5Z" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://snapchat.com/t/JUNXsHOH" target="_blank" aria-label="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
+        </div>
+    </section>
+
+    <!-- SECȚIUNEА 2: MUZICA -->
+    <section id="music" class="content-section grey-bg">
+        <h2 class="rtl">
+            <span class="lang ar">الموسيقى</span>
+            <span class="lang en hidden">The Music</span>
+        </h2>
+        
+        <div class="music-player">
+            <!-- ELEMENTUL VIDEO MP4 NOU ADĂUGAT -->
+            <video 
+                width="100%" 
+                controls 
+                autoplay 
+                muted 
+                playsinline 
+                poster="https://placehold.co/900x400/1a1a1a/fff?text=Osama+Alzain+Video+Poster"
+            >
+                <source src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafybeidnaypjfxwnmrgzt7j7m2bgxhs6xtg3gbaex57daswukbgnwofr3u" type="video/mp4">
+                <!-- Fallback - Text afișat dacă browserul nu poate reda videoclipul -->
+                <span class="lang ar">لا يمكن للمتصفح تشغيل هذا الفيديو.</span>
+                <span class="lang en hidden">Your browser does not support the video tag.</span>
+            </video>
+            
+            <p>
+                <!-- Titlul videoclipului redat (Saba3 Qlob) -->
+                <span class="lang ar">آخر فيديو: أغنية "سبع قلوب" (Saba3 Qlob) - تشغيل محلي</span>
+                <span class="lang en hidden">Latest Video: "Saba3 Qlob" Song - Local Playback</span>
+            </p>
+
+            <!-- BUTONUL YOUTUBE NOU ADĂUGAT -->
+            <a href="https://www.youtube.com/@OsamaAlZain" target="_blank" class="youtube-button">
+                <i class="fab fa-youtube"></i>
+                <span class="lang ar">اذهب إلى قناة يوتيوب الرسمية</span>
+                <span class="lang en hidden">Go to Official YouTube Channel</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECȚIUNEА 3: GALERIE (FOTO) -->
+    <section id="gallery" class="content-section">
+        <h2 class="rtl">
+            <span class="lang ar">المعرض</span>
+            <span class="lang en hidden">Gallery</span>
+        </h2>
+        <p>
+            <span class="lang ar">صور احترافية من الكواليس والعروض الحية.</span>
+            <span class="lang en hidden">Professional shots from behind the scenes and live performances.</span>
+        </p>
+        
+        <div class="photo-grid">
+            <div class="photo-item">
+                <img src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafkreielntimwitgdnz2xag3ynkxlgdmxermhv5q6jfdhhwa5njmc6yrwa" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/300x300/1a1a1a/666?text=Photo+1+Unavailable'" 
+                     alt="[Imagine Osama Alzain pe scenă]">
+            </div>
+            <div class="photo-item">
+                <img src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafkreidfm6befiyac3ff36wnwjsccjfpyz7z7skmnczubty6lj72heg74q" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/300x300/1a1a1a/666?text=Photo+2+Unavailable'" 
+                     alt="[Imagine Osama Alzain - Portret Cinematic]">
+            </div>
+            <div class="photo-item">
+                <img src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafkreifdxcmijgrkfiatjmsumiysnqlwjzlreti54rwidblng75zzkeh3i" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/300x300/1a1a1a/666?text=Photo+3+Unavailable'" 
+                     alt="[Imagine Osama Alzain în studio]">
+            </div>
+            <div class="photo-item">
+                <img src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafkreiawmlyym2bdsg3hotuugti2y53nr7njgwucpyequpiuytzibc5aha" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/300x300/1a1a1a/666?text=Photo+4+Unavailable'" 
+                     alt="[Imagine Osama Alzain cu publicul]">
+            </div>
+            <div class="photo-item">
+                <img src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafkreigrbdlpnymoog4c6xsrtngupjgh57fyatcs2cpstcsh4we56pfqga" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/300x300/1a1a1a/666?text=Photo+5+Unavailable'" 
+                     alt="[Imagine Osama Alzain - Interpretare live]">
+            </div>
+             <!-- Folosim a doua imagine de fundal aici ca o piesă suplimentară de galerie -->
+            <div class="photo-item">
+                <img src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafkreigo2th6d7swtkmkqoqh4hvm2wg3z62jdcjgnjfp753ycrjpgkfpji" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/300x300/1a1a1a/666?text=Photo+6+Unavailable'" 
+                     alt="[Imagine Osama Alzain - Poza oficială]">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECȚIUNEА 4: CONTACT -->
+    <section id="contact" class="content-section grey-bg">
+        <h2 class="rtl">
+            <span class="lang ar">اتصل بنا</span>
+            <span class="lang en hidden">Contact Us</span>
+        </h2>
+        <p>
+            <span class="lang ar">للاستفسارات وحجوزات الفعاليات والتعاون، يرجى استخدام رقم الهاتف أو وسائل التواصل الاجتماعي أدناه.</span>
+            <span class="lang en hidden">For inquiries, event bookings, and collaborations, please use the phone number or social media links below.</span>
+        </p>
+        
+        <!-- Numărul de telefon nou adăugat -->
+        <div class="contact-details">
+            <p>
+                <span class="lang ar">رقم الهاتف للحجز: </span>
+                <span class="lang en hidden">Booking Phone Number: </span>
+                <a href="tel:+9647517380071">+964 751 738 0071</a>
+            </p>
+        </div>
+        
+    </section>
+
+    <footer>
+        <p>
+            <span class="lang ar">&copy; 2025 أسامة الزين. جميع الحقوق محفوظة.</span>
+            <span class="lang en hidden">&copy; 2025 Osama Alzain. All rights reserved.</span>
+        </p>
+    </footer>
+
+    <!-- SCRIPT PENTRU SCHIMBAREA LIMBII ȘI EFECTUL CINEMATIC -->
+    <script>
+        // Setăm limbile disponibile și ordinea lor
+        const LANGUAGES = ['ar', 'en'];
+        let currentLang = LANGUAGES[0]; // Începe cu Arabă
+
+        function toggleLanguage() {
+            // Găsește indexul limbii curente și trece la următoarea (ciclând)
+            const currentIndex = LANGUAGES.indexOf(currentLang);
+            const nextIndex = (currentIndex + 1) % LANGUAGES.length;
+            currentLang = LANGUAGES[nextIndex];
+
+            const body = document.body;
+            
+            // 1. Schimbă direcția (RTL/LTR) pe body și atributul lang al HTML
+            const isRTL = currentLang === 'ar';
+            body.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+            document.documentElement.setAttribute('lang', currentLang);
+            
+            // 2. Schimbă vizibilitatea textelor
+            document.querySelectorAll('.lang').forEach(el => {
+                if (el.classList.contains(currentLang)) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+            
+            // 3. Schimbă alinierea generală (dreapta pentru arabă, stânga pentru engleză)
+            if (isRTL) {
+                body.style.textAlign = 'right';
+            } else {
+                body.style.textAlign = 'left';
+            }
+
+            // 4. Ajustează poziția Socials pe Hero 
+            const socials = document.querySelector('.social-links-hero');
+            if (socials) {
+                if (isRTL) {
+                    socials.style.right = '30px';
+                    socials.style.left = 'auto';
+                } else {
+                    socials.style.left = '30px';
+                    socials.style.right = 'auto';
+                }
+            }
+
+            // 5. Actualizează eticheta butonului
+            document.getElementById('lang-switch').textContent = LANGUAGES.map(l => l.toUpperCase()).join(' / ');
+        }
+
+        // Inițializează site-ul în arabă (AR) la încărcare
+        document.addEventListener('DOMContentLoaded', () => {
+             // Setăm limbă inițială la EN pentru a declanșa prima comutare la AR
+            currentLang = LANGUAGES[1]; // Începe cu 'en'
+            toggleLanguage(); // Aceasta va comuta imediat la 'ar'
+
+            // Efectul Cinematic de Încărcare
+            const heroSection = document.getElementById('hero');
+            if (heroSection) {
+                // Pauză scurtă (200ms) înainte de a începe fade-in-ul
+                setTimeout(() => {
+                    heroSection.classList.add('cinematic-reveal');
+                }, 200); 
+            }
+        });
+    </script>
+</body>
+</html>
+

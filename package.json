@@ -1,0 +1,17 @@
+{
+  "name": "osama-alzain-website",
+  "version": "1.0.0",
+  "description": "Official website for Osama Alzain - Singer",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build step required for static site'"
+  },
+  "keywords": [
+    "singer",
+    "music",
+    "website"
+  ],
+  "author": "",
+  "license": "ISC"
+}
+
